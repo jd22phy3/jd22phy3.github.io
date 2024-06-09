@@ -1,0 +1,83 @@
+<!DOCTYPE html>  
+<html lang="en">  
+<head>  
+    <meta charset="UTF-8">  
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+    <title>倒计时</title>  
+    <style>  
+        .countdown-container {  
+            margin-bottom: 20px;  
+        }  
+    </style>  
+</head>  
+<body>  
+  
+<div class="countdown-container">  
+    <h2>上学</h2>  
+    <h1 id="countdown1"></h1>  
+</div>  
+  
+<div class="countdown-container">  
+    <h2>学考模拟考</h2>  
+    <h1 id="countdown2"></h1>  
+</div> 
+<div class="countdown-container">  
+    <h2>高二期末杭州市统测</h2>  
+    <h1 id="countdown3"></h1>  
+</div> 
+<div class="countdown-container">  
+    <h2>学考</h2>  
+    <h1 id="countdown4"></h1>  
+</div> 
+<div class="countdown-container">  
+    <h2>高考</h2>  
+    <h1 id="countdown5"></h1>  
+</div> 
+  
+<script>  
+    // 倒计时函数  
+    function startCountdown(containerId, eventDate) {  
+        var countdownElement = document.getElementById(containerId);  
+  
+        function updateCountdown() {  
+            var now = new Date();  
+            var distance = eventDate - now;  
+  
+            // 计算时间差  
+            var days = Math.floor(distance / (1000 * 60 * 60 * 24));  
+            var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));  
+            var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));  
+            var seconds = Math.floor((distance % (1000 * 60)) / 1000);  
+  
+            // 显示倒计时  
+            countdownElement.textContent = days + '天 ' + hours + '时 ' + minutes + '分 ' + seconds + '秒 ';  
+  
+            // 如果倒计时结束，显示一条消息  
+            if (distance < 0) {  
+                clearInterval(countdownInterval);  
+                countdownElement.textContent = '事件已发生!';  
+            }  
+        }  
+  
+        // 每秒更新一次倒计时  
+        var countdownInterval = setInterval(updateCountdown, 1000);  
+  
+        // 初始显示倒计时  
+        updateCountdown();  
+    }  
+  
+    // 设置并启动两个倒计时  
+    var eventDate1 = new Date("2024-06-10T17:30:00"); 
+    var eventDate2 = new Date("2024-06-11T08:00:00");
+	var eventDate3 = new Date("2024-06-24T08:00:00");
+    var eventDate4 = new Date("2024-07-06T14:00:00");  
+    var eventDate5 = new Date("2025-06-07T08:00:00");  
+    startCountdown('countdown1', eventDate1); 
+    startCountdown('countdown2', eventDate2); 
+    startCountdown('countdown3', eventDate3); 
+    startCountdown('countdown4', eventDate4); 
+    startCountdown('countdown5', eventDate5); 
+</script>  
+  
+</body>  
+</html>
